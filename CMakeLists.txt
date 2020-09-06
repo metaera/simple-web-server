@@ -86,3 +86,10 @@ if(BUILD_TESTING OR BUILD_FUZZING)
     endif()
     add_subdirectory(tests)
 endif()
+
+# auto install after build
+add_custom_command(
+    TARGET https_examples
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target install
+)
